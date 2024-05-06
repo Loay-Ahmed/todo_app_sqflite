@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:sqflite/sqflite.dart' as sql;
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
@@ -15,9 +17,11 @@ class SQLHelper {
 
   static Future<sql.Database> db() async {
     // Initialize FFI
-    // sqfliteFfiInit();
-    //
-    // sql.databaseFactory = databaseFactoryFfi;
+    if (!Platform.isAndroid) {
+      sqfliteFfiInit();
+
+      sql.databaseFactory = databaseFactoryFfi;
+    }
     return sql.openDatabase(
       'tasks.db',
       version: 1,
