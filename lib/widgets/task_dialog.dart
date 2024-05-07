@@ -84,6 +84,9 @@ class _PopUpMenuState extends State<PopUpMenu> {
               fontWeight: FontWeight.w500,
             ),
             cursorColor: Colors.grey.shade900,
+            minLines: 1,
+            maxLines: 2,
+            maxLength: 250,
             decoration: InputDecoration(
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(

@@ -17,10 +17,10 @@ class SQLHelper {
 
   static Future<sql.Database> db() async {
     // Initialize FFI
-    if (!Platform.isAndroid) {
+    if (Platform.isWindows) {
       sqfliteFfiInit();
 
-      sql.databaseFactory = databaseFactoryFfi;
+      databaseFactory = databaseFactoryFfi;
     }
     return sql.openDatabase(
       'tasks.db',
